@@ -273,10 +273,14 @@
     <Content Include="client\www\lib\ionic\scss\_util.scss" />
     <Content Include="client\www\lib\ionic\scss\_variables.scss" />
     <Content Include="client\www\lib\ionic\version.json" />
-    <Content Include="client\www\templates\chat-detail.html" />
-    <Content Include="client\www\templates\tab-account.html" />
-    <Content Include="client\www\templates\tab-chats.html" />
-    <Content Include="client\www\templates\tab-dash.html" />
+    <Content Include="client\www\templates\archives\chat-detail.html" />
+    <Content Include="client\www\templates\archives\tab-account.html" />
+    <Content Include="client\www\templates\archives\tab-chats.html" />
+    <Content Include="client\www\templates\archives\tab-dash.html" />
+    <Content Include="client\www\templates\archives\tabs.html" />
+    <Content Include="client\www\templates\player-detail.html" />
+    <Content Include="client\www\templates\tab-players.html" />
+    <Content Include="client\www\templates\tab-settings.html" />
     <Content Include="client\www\templates\tabs.html" />
     <Content Include="package.json" />
     <Content Include="README.md" />
@@ -404,6 +408,7 @@
     <Folder Include="client\www\lib\ionic\scss\" />
     <Folder Include="client\www\lib\ionic\scss\ionicons\" />
     <Folder Include="client\www\templates\" />
+    <Folder Include="client\www\templates\archives\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="client\gulpfile.js" />
