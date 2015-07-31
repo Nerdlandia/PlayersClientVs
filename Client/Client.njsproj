@@ -393,6 +393,7 @@
     <Folder Include="client\www\css\" />
     <Folder Include="client\www\img\" />
     <Folder Include="client\www\js\" />
+    <Folder Include="client\www\js\archives\" />
     <Folder Include="client\www\lib\" />
     <Folder Include="client\www\lib\ionic\" />
     <Folder Include="client\www\lib\ionic\css\" />
@@ -428,6 +429,9 @@
     <Compile Include="client\plugins\cordova-plugin-splashscreen\www\windows\SplashScreenProxy.js" />
     <Compile Include="client\plugins\cordova-plugin-whitelist\whitelist.js" />
     <Compile Include="client\www\js\app.js" />
+    <Compile Include="client\www\js\archives\app.js" />
+    <Compile Include="client\www\js\archives\controllers.js" />
+    <Compile Include="client\www\js\archives\services.js" />
     <Compile Include="client\www\js\controllers.js" />
     <Compile Include="client\www\js\services.js" />
     <Compile Include="client\www\lib\ionic\js\angular-ui\angular-ui-router.js" />

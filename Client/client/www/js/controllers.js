@@ -1,28 +1,63 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope) {})
+.controller('PlayersCtrl', function ($scope, Players) {
 
-.controller('ChatsCtrl', function($scope, Chats) {
-  // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
-  // To listen for when this page is active (for example, to refresh data),
-  // listen for the $ionicView.enter event:
-  //
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
 
-  $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
-  };
+      var update = function (data) {
+        $scope.players = data;
+      };
+
+      $scope.$on('$ionicView.enter', function(e) {
+        $scope.players = [];
+        $scope.players = Players.all(update);
+      });
+
+      $scope.remove = function (id) {
+        Players.delete(id);
+        $scope.players = Players.all(update);
+      };
+
+    })
+
+.controller('PlayerDetailCtrl', function ($scope, Players, $stateParams, $location) {
+      $scope.isEditing = false;
+      $scope.player = {};
+
+      $scope.$on('$ionicView.enter', function(e) {
+        $scope.player = Players.get($stateParams.playerId);
+      });
+
+      $scope.add = function () {
+        Players.add($scope.player);
+        $scope.isEditing = false;
+        $location.path('players');
+      };
+
+      $scope.new = function () {
+        $scope.player = Players.new();
+        $scope.isEditing = true;
+      };
+
+      $scope.remove = function () {
+        Players.delete($scope.player.userid);
+        $location.path('players');
+        $scope.isEditing = false;
+      };
+
 })
 
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.chatId);
-})
+.controller('SettingsCtrl', function($scope, Settings) {
 
-.controller('AccountCtrl', function($scope) {
-  $scope.settings = {
-    enableFriends: true
+  $scope.serverList = [];
+  $scope.selectedName = Settings.serverName();
+
+  $scope.$on('$ionicView.enter', function(e) {
+    $scope.serverList = Settings.serverList();
+  });
+
+  $scope.updateServer = function (name) {
+    Settings.setServer(name);
+    $scope.selectedName = Settings.serverName();
   };
+
 });

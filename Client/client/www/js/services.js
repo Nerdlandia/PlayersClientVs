@@ -1,50 +1,108 @@
 angular.module('starter.services', [])
 
-.factory('Chats', function() {
-  // Might use a resource here that returns a JSON array
+.factory('Players', function ($http, Settings) {
 
-  // Some fake testing data
-  var chats = [{
-    id: 0,
-    name: 'Ben Sparrow',
-    lastText: 'You on your way?',
-    face: 'https://pbs.twimg.com/profile_images/514549811765211136/9SgAuHeY.png'
-  }, {
-    id: 1,
-    name: 'Max Lynx',
-    lastText: 'Hey, it\'s me',
-    face: 'https://avatars3.githubusercontent.com/u/11214?v=3&s=460'
-  }, {
-    id: 2,
-    name: 'Adam Bradleyson',
-    lastText: 'I should buy a boat',
-    face: 'https://pbs.twimg.com/profile_images/479090794058379264/84TKj_qa.jpeg'
-  }, {
-    id: 3,
-    name: 'Perry Governor',
-    lastText: 'Look at my mukluks!',
-    face: 'https://pbs.twimg.com/profile_images/598205061232103424/3j5HUXMY.png'
-  }, {
-    id: 4,
-    name: 'Mike Harrington',
-    lastText: 'This is wicked good ice cream.',
-    face: 'https://pbs.twimg.com/profile_images/578237281384841216/R3ae1n61.png'
-  }];
+      var that = {};
 
-  return {
-    all: function() {
-      return chats;
-    },
-    remove: function(chat) {
-      chats.splice(chats.indexOf(chat), 1);
-    },
-    get: function(chatId) {
-      for (var i = 0; i < chats.length; i++) {
-        if (chats[i].id === parseInt(chatId)) {
-          return chats[i];
+      var players = [];
+
+      that.all = function (callback) {
+          $http.get(Settings.serverValue() + 'players').success(function (data) {
+            players = data;
+            callback(players);
+          }).error(function (data) {
+            alert('Unable to connect to server ' + Settings.serverName() + '.  Response from server was: ' + data);
+          });
+      };
+
+      that.get = function (id) {
+        var result = null;
+        players.forEach(function (player) {
+          if (player.userid === parseInt(id, 10)) {
+            result = player;
+          }
+        });
+        return result;
+      };
+
+      that.add = function (data) {
+          if(data.userid) {
+              // do a put
+              var newPlayer = [];
+              newPlayer.push(data);
+              $http.put(Settings.serverValue() + 'players/' + data.userid, newPlayer).success(function (data) {
+
+              }).error(function (data) {
+                  alert('Unable to connect to server ' + Settings.serverName() + '.  Response from server was: ' + data);
+              });
+          } else {
+              // do a post
+              var newPlayer = [];
+              newPlayer.push(data);
+              $http.post(Settings.serverValue() + 'players', newPlayer).success(function (data) {
+
+              }).error(function (data) {
+                  alert('Unable to connect to server ' + Settings.serverName() + '.  Response from server was: ' + data);
+              });
+          }
+
+      };
+
+      that.delete = function (id) {
+        $http.delete(Settings.serverValue() + 'players/' + id).success(function (data) {
+
+        }).error(function (data) {
+          alert('Unable to connect to server ' + Settings.serverName() + '.  Response from server was: ' + data);
+        });
+      };
+
+      that.new = function () {
+        return {
+          userid: null,
+          name: null,
+          comments: null,
+          email: null,
+          salary: null,
+          signdate: null
         }
-      }
-      return null;
-    }
-  };
-});
+      };
+
+      return that;
+
+})
+
+.factory('Settings', function () {
+      var that = {};
+
+      var servers = [
+        { name: "OfficeSandpoint", value: "http://10.10.50.252:7789/api/", isSelected: true},
+        { name: "Digial Ocean", value: "http://104.131.69.243/playersapi/", isSelected: false},
+        { name: "RaspberryPi", value: "http://10.10.50.207/api/", isSelected: false}
+      ];
+
+      var selectedServer = 0;
+
+      that.serverName = function () {
+        return servers[selectedServer].name;
+      };
+
+      that.serverValue = function () {
+        return servers[selectedServer].value;
+      };
+
+      that.setServer = function (name) {
+        servers.forEach(function (server, index) {
+            server.isSelected = false;
+            if (server.name === name) {
+                selectedServer = index;
+                server.isSelected = true;
+            }
+        });
+      };
+
+      that.serverList = function () {
+        return servers;
+      };
+
+      return that;
+    });
