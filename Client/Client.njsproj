@@ -224,6 +224,7 @@
     <Content Include="client\plugins\cordova-plugin-whitelist\src\ios\CDVNavigationWhitelistPlugin.m" />
     <Content Include="client\plugins\fetch.json" />
     <Content Include="client\scss\ionic.app.scss" />
+    <Content Include="client\www\archives\index.html" />
     <Content Include="client\www\css\style.css" />
     <Content Include="client\www\img\ionic.png" />
     <Content Include="client\www\index.html" />
@@ -407,6 +408,7 @@
     <Folder Include="client\www\lib\ionic\js\angular\" />
     <Folder Include="client\www\lib\ionic\scss\" />
     <Folder Include="client\www\lib\ionic\scss\ionicons\" />
+    <Folder Include="client\www\archives\" />
     <Folder Include="client\www\templates\" />
     <Folder Include="client\www\templates\archives\" />
   </ItemGroup>
