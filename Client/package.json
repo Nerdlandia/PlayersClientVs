@@ -1,0 +1,13 @@
+{
+  "name": "Client",
+  "version": "1.0.0",
+  "description": "Ionic hybrid client as a visual studio solution",
+  "main": "client.js",
+  "author": {
+    "name": "markaurit",
+    "email": "markaurit@gmail.com"
+  },
+  "dependencies": {
+    "express": "^4.13.2"
+  }
+}

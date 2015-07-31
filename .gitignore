@@ -4,6 +4,9 @@
 # Node and Visual Studio Node Tools
 node_modules/
 .ntvs_analysis.dat
+# Ionic
+scss/
+hooks/
 
 # User-specific files
 *.suo
