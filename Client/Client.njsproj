@@ -226,6 +226,7 @@
     <Content Include="client\scss\ionic.app.scss" />
     <Content Include="client\www\archives\index.html" />
     <Content Include="client\www\css\style.css" />
+    <Content Include="client\www\icons\android\iconCat.png" />
     <Content Include="client\www\img\ionic.png" />
     <Content Include="client\www\index.html" />
     <Content Include="client\www\lib\ionic\css\ionic.css" />
@@ -396,6 +397,7 @@
     <Folder Include="client\scss\" />
     <Folder Include="client\www\" />
     <Folder Include="client\www\css\" />
+    <Folder Include="client\www\icons\android\" />
     <Folder Include="client\www\img\" />
     <Folder Include="client\www\js\" />
     <Folder Include="client\www\js\archives\" />
@@ -409,6 +411,7 @@
     <Folder Include="client\www\lib\ionic\scss\" />
     <Folder Include="client\www\lib\ionic\scss\ionicons\" />
     <Folder Include="client\www\archives\" />
+    <Folder Include="client\www\icons\" />
     <Folder Include="client\www\templates\" />
     <Folder Include="client\www\templates\archives\" />
   </ItemGroup>
