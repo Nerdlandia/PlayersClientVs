@@ -76,8 +76,8 @@ angular.module('starter.services', [])
 
       var servers = [
         { name: "OfficeSandpoint", value: "http://10.10.50.252:7789/api/", isSelected: true},
-        { name: "Digial Ocean", value: "http://104.131.69.243:7777/api/", isSelected: false},
-        { name: "RaspberryPi", value: "http://10.10.50.46:7777/api/", isSelected: false}
+        { name: "Digital Ocean", value: "http://104.131.69.243:7777/api/", isSelected: false},
+        { name: "Raspberry Pi", value: "http://10.10.50.46:7777/api/", isSelected: false}
       ];
 
       var selectedServer = 0;
