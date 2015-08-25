@@ -10,8 +10,8 @@ angular.module('starter.services', [])
           $http.get(Settings.serverValue() + 'players').success(function (data) {
             players = data;
             callback(players);
-          }).error(function (data) {
-            alert('Unable to connect to server ' + Settings.serverName() + '.  Response from server was: ' + data);
+        }).error(function (data) {
+              alert(networkerrormsg(Settings, data));
           });
       };
 
@@ -33,7 +33,7 @@ angular.module('starter.services', [])
               $http.put(Settings.serverValue() + 'players/' + data.userid, newPlayer).success(function (data) {
 
               }).error(function (data) {
-                  alert('Unable to connect to server ' + Settings.serverName() + '.  Response from server was: ' + data);
+                alert(networkerrormsg(Settings, data));
               });
           } else {
               // do a post
@@ -42,7 +42,7 @@ angular.module('starter.services', [])
               $http.post(Settings.serverValue() + 'players', newPlayer).success(function (data) {
 
               }).error(function (data) {
-                  alert('Unable to connect to server ' + Settings.serverName() + '.  Response from server was: ' + data);
+                alert(networkerrormsg(Settings, data));
               });
           }
 
@@ -52,7 +52,7 @@ angular.module('starter.services', [])
         $http.delete(Settings.serverValue() + 'players/' + id).success(function (data) {
 
         }).error(function (data) {
-          alert('Unable to connect to server ' + Settings.serverName() + '.  Response from server was: ' + data);
+            alert(networkerrormsg(Settings, data));
         });
       };
 
@@ -65,7 +65,12 @@ angular.module('starter.services', [])
           salary: null,
           signdate: null
         }
-      };
+    };
+    
+    function networkerrormsg(settings, data) {
+        return 'Unable to connect to server ' + settings.serverName() + '@' + settings.serverValue() + '.  Response from server was: ' + data;
+    }
+
 
       return that;
 
@@ -77,7 +82,7 @@ angular.module('starter.services', [])
       var servers = [
         { name: "Office Sandpoint", value: "http://10.10.50.252:7789/api/", isSelected: true},
         { name: "Digital Ocean", value: "http://104.131.69.243:7777/api/", isSelected: false},
-        { name: "Raspberry Pi", value: "http://10.10.50.46:7777/api/", isSelected: false}
+        { name: "Raspberry Pi", value: "http://10.10.50.7:7777/api/", isSelected: false}
       ];
 
       var selectedServer = 0;

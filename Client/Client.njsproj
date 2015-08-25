@@ -12,8 +12,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>b873df4a-093f-4657-88d6-ebcb86db15cf</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>
-    </StartupFile>
+    <StartupFile>client\www\client.js</StartupFile>
     <StartWebBrowser>False</StartWebBrowser>
     <SearchPath>
     </SearchPath>
@@ -438,6 +437,7 @@
     <Compile Include="client\plugins\cordova-plugin-splashscreen\www\splashscreen.js" />
     <Compile Include="client\plugins\cordova-plugin-splashscreen\www\windows\SplashScreenProxy.js" />
     <Compile Include="client\plugins\cordova-plugin-whitelist\whitelist.js" />
+    <Compile Include="client\www\client.js" />
     <Compile Include="client\www\js\app.js" />
     <Compile Include="client\www\js\archives\app.js" />
     <Compile Include="client\www\js\archives\controllers.js" />
